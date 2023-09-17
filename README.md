@@ -40,3 +40,12 @@ Inside the file the data is stored in a table like:
 | ---- | --------- | ----------- | ------- | ------------ |
 | str  | str or null | str | str | str |
 
+## SQL data
+
+The data can be found in SQL format in [db/sql](db/sql) folder.
+
+The data is stored in a table called orchids with the following columns:
+
+| name | discovery | description | species | distribution |
+| ---- | --------- | ----------- | ------- | ------------ |
+| str  | str or null | str | str | str |

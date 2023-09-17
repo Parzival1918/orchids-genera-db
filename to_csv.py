@@ -2,7 +2,7 @@ from helpers import utils
 import json
 import os
 
-#Create folder to store the json files
+#Create folder to store the csv files
 path = utils.SAVE_LOC + "/csv"
 if not os.path.exists(path):
     os.makedirs(path)
@@ -20,7 +20,7 @@ def save_csv(data: list[dict], name: str):
         writer.writeheader()
         writer.writerows(data)
 
-#Lead files in json folder
+#Read files in json folder
 files = os.listdir(utils.SAVE_LOC + "/json")
 
 for file in files:

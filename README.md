@@ -42,7 +42,7 @@ Inside the file the data is stored in a table like:
 
 ## SQL data
 
-The data can be found in SQL format in [db/sqlite](db/sql) folder.
+The data can be found in SQL format in [db/sqlite](db/sqlite) folder.
 
 The data is stored in a table called orchids with the following columns:
 

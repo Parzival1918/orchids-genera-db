@@ -1,4 +1,16 @@
 from helpers import utils
+import json
+import os
+
+#Create folder to store the json files
+path = utils.SAVE_LOC + "/json"
+if not os.path.exists(path):
+    os.makedirs(path)
+
+#Function to save the json file
+def save_json(data: dict, name: str):
+    with open(path + "/" + name + ".json", "w") as file:
+        json.dump(data, file, indent=4)
 
 #Load source page
 print("Loading page to bs4... ", end="")
@@ -16,8 +28,8 @@ filtered = utils.match_links(links, '/orchids/orchids-a-to-z/')
 print("Done", end="\n\n")
 
 #Iterate over every link found to obtain the information of every genera
-for genera_link in filtered:
-    print(f"Obtaining data from: {genera_link}")
+for genera_link in filtered[16:]:
+    print(f"Obtaining data from: {genera_link}... ", end="")
 
     #From genera_link obtain the letter we are searching
     split_txt = genera_link.split("/")
@@ -29,6 +41,20 @@ for genera_link in filtered:
 
     #Filter links
     filtered = utils.match_links(links,'/orchids/orchids-a-to-z/'+search_letter+"/")
-    print(filtered)
 
-    break
+    print("Done")
+
+    data_dict = []
+    for genera_filtered in filtered:
+        print(f" - Obtaining data from: {genera_filtered}... ", end="")
+
+        info = utils.get_genera_info(genera_filtered)
+        data_dict.append(info)
+
+        print("Done")
+
+    print("Saving data to json file... ", end="")
+    save_json(data_dict, search_letter)
+    print("Done", end="\n\n")
+
+        
